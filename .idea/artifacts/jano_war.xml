@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="jano:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="jano-1.0.war">
+      <element id="artifact" artifact-name="jano:war exploded" />
+    </root>
+  </artifact>
+</component>

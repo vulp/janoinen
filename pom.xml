@@ -3,10 +3,34 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>jano</groupId>
     <artifactId>jano</artifactId>
     <version>1.0</version>
+    <name>jano webapp</name>
+    <packaging>war</packaging>
+    <properties>
+        <springv>3.0.5.RELEASE</springv>
+    </properties>
+   <dependencies>
 
-    
+		<!-- Spring 3 dependencies -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${springv}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${springv}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${springv}</version>
+		</dependency>
+
+	</dependencies>
 </project>

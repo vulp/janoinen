@@ -10,16 +10,21 @@ package controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import parsers.Lintu;
+
 
 @Controller
-@RequestMapping("/jano")
+@RequestMapping("/")
 public class jano {
+
+    private Lintu parse;
+
     @RequestMapping()
 	public String printWelcome(Model model) {
 
         //todo hae parse metodista tulos tähän ja palauta se modelissa
-
-		model.addAttribute("message", "Spring 3 MVC Hello World");
+        parse = new Lintu();
+		model.addAttribute("olvi", parse.parsePage());
 		return "index";
 
 	}

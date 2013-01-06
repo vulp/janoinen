@@ -20,7 +20,7 @@ public class jano {
         //todo hae parse metodista tulos tähän ja palauta se modelissa
 
 		model.addAttribute("message", "Spring 3 MVC Hello World");
-		return "hello";
+		return "index";
 
 	}
 }

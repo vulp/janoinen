@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="jano:war exploded">
-    <output-path>$PROJECT_DIR$/target/jano-1.0</output-path>
+    <output-path>$PROJECT_DIR$/target/SpringMVC</output-path>
     <root id="root">
       <element id="javaee-facet-resources" facet="jano/web/Web" />
       <element id="directory" name="WEB-INF">
@@ -19,6 +19,7 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-expression:3.0.5.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:3.0.5.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-context-support:3.0.5.RELEASE" />
+          <element id="library" level="project" name="Maven: org.jsoup:jsoup:1.7.1" />
         </element>
       </element>
     </root>

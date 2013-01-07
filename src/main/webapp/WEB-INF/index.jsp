@@ -6,10 +6,18 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Helsingin hanat</title>
-    <link href="${url}css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="css/style.css" rel="stylesheet" media="screen">
+    <link href="${url}/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="${url}/css/style.css" rel="stylesheet" media="screen">
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
-	<script src="js/bootstrap.min.js"></script>
+	<script src="${url}/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        $(function(){
+            $.get('${url}/lintu', function(data){
+              $('#lintu').html(data);
+            });
+        });
+    </script>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -63,6 +71,7 @@
               su 1-1<br />
               </p>
               <p><a class="btn" href="#">View details &raquo;</a></p>
+              <div id="lintu"></div>
             </div><!--/span-->
             <div class="span5">
               <h2>Kaisla</h2>

@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="jano:war exploded">
-    <output-path>$PROJECT_DIR$/target/SpringMVC</output-path>
+    <output-path>$PROJECT_DIR$/target/janoinen</output-path>
     <root id="root">
       <element id="javaee-facet-resources" facet="jano/web/Web" />
       <element id="directory" name="WEB-INF">

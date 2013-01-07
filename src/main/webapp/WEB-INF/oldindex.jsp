@@ -8,9 +8,19 @@
 <br />
 
 
-<c:forEach items="${olvi}" var="bisse">
-<c:out value="${bisse.name}"/>
-<br />
+<table class="table">
+    <tbody>
+    <tr><th>Nimi</th><th>%</th><th>€</th><th>Ratebeer / Olutopas</th></tr>
+    <c:forEach items="${olvi}" var="bisse">
+        <tr>
+            <td><c:out value="${bisse.name}"/></td>
+            <td><c:out value="${bisse.percent}"/></td>
+            <td><c:out value="${bisse.price}"/></td>
+            <td><a href="http://www.ratebeer.com/findbeer.asp?BeerName=karhu">Ratebeer</a></td>
+        </tr>
 </c:forEach>
+    </tbody>
+</table>
+
 </body>
 </html>

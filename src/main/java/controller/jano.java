@@ -46,9 +46,17 @@ public class jano {
 
         } else if(ravintola.equalsIgnoreCase("urho")) {
 
+        } else if(ravintola.equalsIgnoreCase("sedula")) {
+            Beer beer = new Beer();
+            beer.setName("Kotona saat vettä ilmaiseksi");
+            beer.setPrice(777);
+            beer.setDescription("Koitahan hakea jollain seuraavista: kaisla, urho, penni");
+            beerList = new ArrayList<Beer>();
+            beerList.add(beer);
         } else {
             Beer beer = new Beer();
             beer.setName("Nyt on bisse hukassa");
+            beerList = new ArrayList<Beer>();
             beerList.add(beer);
         }
         model.addAttribute("olvi", beerList);

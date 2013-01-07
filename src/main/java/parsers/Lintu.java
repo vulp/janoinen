@@ -29,11 +29,11 @@ public class Lintu {
             Elements elements = doc.select("div#maincontent li span");
             for(Element element : elements) {
                 String eT = element.text();
-                String nimi = eT.substring(0,eT.indexOf("-")).trim()+", ";
+                String nimi = eT.substring(0,eT.indexOf("-")).trim();  //todo korjaa nimi, ei tule oikein ratebeer ei löydä
                 //todo laske viivat   Magners omenasiideri, 4,5%  (väärin)
-                nimi += eT.substring(eT.lastIndexOf("-") + 1, eT.length()).trim();
+                String desc = eT.substring(eT.lastIndexOf("-") + 1, eT.length()).trim();
                 double percent = Double.parseDouble(eT.substring(eT.indexOf("-") + 1 , eT.indexOf("%")).trim().replace(",", ".").replaceAll("\u00A0",""));
-                beerList.add(new Beer(nimi, -1, percent));
+                beerList.add(new Beer(nimi, -1, percent,desc));
             }
         }catch (Exception e) {
             System.out.println("error " +e);

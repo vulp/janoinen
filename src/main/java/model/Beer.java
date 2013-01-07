@@ -8,27 +8,28 @@ package model;
  * To change this template use File | Settings | File Templates.
  */
 public class Beer {
-    public String Name;
+    private String name;
     private double price;
     private double percent;
-
+    private String description;
 
     public Beer() {
 
     }
 
-    public Beer(String name, double price, double percent) {
-        this.Name = name;
+    public Beer(String name, double price, double percent, String description) {
+        this.name = name;
         this.price = price;
         this.percent = percent;
+        this.description = description;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        this.Name = name;
+        this.name = name;
     }
 
     public double getPrice() {
@@ -45,5 +46,13 @@ public class Beer {
 
     public void setPercent(double percent) {
         this.percent = percent;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

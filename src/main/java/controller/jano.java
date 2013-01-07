@@ -13,7 +13,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import parsers.Kaisla;
 import parsers.Lintu;
+import parsers.Penni;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +26,8 @@ import java.util.List;
 public class jano {
 
     private Lintu lintu = new Lintu();
+    private Kaisla kaisla = new Kaisla();
+    private Penni penni = new Penni();
 
     @RequestMapping("/")
     public String showIndex(){
@@ -32,10 +36,20 @@ public class jano {
 
     @RequestMapping(value = "/{ravintola}", method = RequestMethod.GET)
 	public String printWelcome(@PathVariable String ravintola, Model model) {
-        List<Beer> beerList = null;// = new ArrayList<Beer>();
-        //todo hae parse metodista tulos tähän ja palauta se modelissa
+        List<Beer> beerList = null;
+
         if(ravintola.equalsIgnoreCase("lintu")) {
             beerList = lintu.parsePage();
+        } else if(ravintola.equalsIgnoreCase("penni")) {
+
+        } else if(ravintola.equalsIgnoreCase("kaisla")) {
+
+        } else if(ravintola.equalsIgnoreCase("urho")) {
+
+        } else {
+            Beer beer = new Beer();
+            beer.setName("Nyt on bisse hukassa");
+            beerList.add(beer);
         }
         model.addAttribute("olvi", beerList);
 		return "beerList";

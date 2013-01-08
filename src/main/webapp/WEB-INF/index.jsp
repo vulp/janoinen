@@ -13,7 +13,7 @@
 
     <script type="text/javascript">
         $(function(){
-            $.get('${url}/lintu', function(data){
+            $.get('${url}/urho', function(data){
               $('#lintu').html(data);
             });
         });

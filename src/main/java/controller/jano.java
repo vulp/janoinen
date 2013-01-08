@@ -13,9 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import parsers.Kaisla;
-import parsers.Lintu;
-import parsers.Penni;
+import parsers.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +26,8 @@ public class jano {
     private Lintu lintu = new Lintu();
     private Kaisla kaisla = new Kaisla();
     private Penni penni = new Penni();
+    private Urho urho = new Urho();
+    private OnePint onePint = new OnePint();
 
     @RequestMapping("/")
     public String showIndex(){
@@ -44,9 +44,11 @@ public class jano {
 
         } else if(ravintola.equalsIgnoreCase("kaisla")) {
 
+        } else if(ravintola.equalsIgnoreCase("onepint")) {
+            beerList = onePint.parsePage();
         } else if(ravintola.equalsIgnoreCase("urho")) {
-
-        } else if(ravintola.equalsIgnoreCase("sedula")) {
+            beerList = urho.parsePage();
+        } else if(ravintola.equalsIgnoreCase("onnela")) {
             Beer beer = new Beer();
             beer.setName("Kotona saat vettä ilmaiseksi");
             beer.setPrice(777);

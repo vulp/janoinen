@@ -28,7 +28,7 @@ public class jano {
     private Penni penni = new Penni();
     private Urho urho = new Urho();
     private OnePint onePint = new OnePint();
-
+    private Stones stones = new Stones();
     @RequestMapping("/")
     public String showIndex(){
         return "index";
@@ -41,14 +41,16 @@ public class jano {
         if(ravintola.equalsIgnoreCase("lintu")) {
             beerList = lintu.parsePage();
         } else if(ravintola.equalsIgnoreCase("penni")) {
-
+            beerList = penni.parsePage();
         } else if(ravintola.equalsIgnoreCase("kaisla")) {
 
+        } else if(ravintola.equalsIgnoreCase("stones")) {
+            beerList = stones.parsePage();
         } else if(ravintola.equalsIgnoreCase("onepint")) {
             beerList = onePint.parsePage();
         } else if(ravintola.equalsIgnoreCase("urho")) {
             beerList = urho.parsePage();
-        } else if(ravintola.equalsIgnoreCase("onnela")) {
+        } else if(ravintola.equalsIgnoreCase("onnela") || ravintola.equalsIgnoreCase("tiger")) {
             Beer beer = new Beer();
             beer.setName("Kotona saat vettä ilmaiseksi");
             beer.setPrice(777);

@@ -13,7 +13,7 @@
 
     <script type="text/javascript">
         $(function(){
-            $.get('${url}/penni', function(data){
+            $.get('${url}/kaisla', function(data){
               $('#lintu').html(data);
             });
         });

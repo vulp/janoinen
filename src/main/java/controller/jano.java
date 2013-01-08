@@ -34,6 +34,7 @@ public class jano {
         return "index";
     }
 
+    //todo laita eri metodeihin
     @RequestMapping(value = "/{ravintola}", method = RequestMethod.GET)
 	public String printWelcome(@PathVariable String ravintola, Model model) {
         List<Beer> beerList = null;
@@ -43,7 +44,7 @@ public class jano {
         } else if(ravintola.equalsIgnoreCase("penni")) {
             beerList = penni.parsePage();
         } else if(ravintola.equalsIgnoreCase("kaisla")) {
-
+            beerList = kaisla.parsePage();
         } else if(ravintola.equalsIgnoreCase("stones")) {
             beerList = stones.parsePage();
         } else if(ravintola.equalsIgnoreCase("onepint")) {

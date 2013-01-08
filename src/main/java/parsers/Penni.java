@@ -10,7 +10,7 @@ import java.util.*;
 
 /**
  * Created by IntelliJ IDEA.
- * User: vulp
+ * User: vulp / vetoketju
  * Date: 1/7/13
  * Time: 10:40 PM
  * To change this template use File | Settings | File Templates.
@@ -22,22 +22,38 @@ public class Penni {
     public List<Beer> parsePage() {
         try {
             beerList = new ArrayList<Beer>();
-            Set beerSet;
-            doc = Jsoup.connect("http://oluttupa.viisipennia.fi/hanassa-nyt").get();
-            Elements elements = doc.select("div#txt span");
-            String parseHelp = "";
-            String nimi = "";
-            for (Element element : elements) {
+            doc = Jsoup.connect("http://oluttupa.viisipennia.fi/hanassa-nyt").userAgent("Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.97 Safari/537.11").get();
+            Elements elements = doc.select("div#txt p");
 
-                if (!element.text().equalsIgnoreCase("Hanassa Nyt") &&
-                        !element.text().equalsIgnoreCase("&nbsp;") &&
-                        element.text().trim().length() > 1) {
-                    System.out.println("test " + element.text() + "  " + element.text().trim().length());
-                    //nimi = element.text();
-                    beerList.add(new Beer(element.text(), -1, -1, ""));
+            Beer thisBeer = null;
+
+            for (Element element : elements) {
+                String eT = element.text().replaceAll("\u00A0", " ").trim();
+                if (!eT.equalsIgnoreCase("Hanassa Nyt") && !eT.equalsIgnoreCase("&nbsp;") && eT.length() > 1) {
+                    if (!eT.startsWith("-")) {
+                        if (thisBeer != null) beerList.add(thisBeer);
+                        thisBeer = new Beer();
+                        thisBeer.setPrice(-1);
+                        int prosenttimerkinKohta = eT.indexOf("%");
+                        int alku = 0;
+                        for (int i = prosenttimerkinKohta - 1; i >= alku; i--) {
+                            if (!Character.isDigit(eT.charAt(i)) && eT.charAt(i) != ',' && eT.charAt(i) != '.' && eT.charAt(i) != ' ') {
+                                alku = i;
+                                break;
+                            }
+                        }
+                        thisBeer.setName(eT.substring(0, alku + 1).trim());
+                        thisBeer.setPercent(Double.parseDouble(eT.substring(alku + 1, prosenttimerkinKohta).replace(',', '.').trim()));
+
+                    } else {
+                        if (thisBeer.getDescription() == null) {
+                            thisBeer.setDescription(eT.replaceFirst("-", ""));
+                        } else {
+                            thisBeer.setDescription(thisBeer.getDescription() + "," + eT.replaceFirst("-", ""));
+                        }
+                    }
                 }
             }
-            //todo poista duplikaatit ja parsi tämän jälkeen prossat
 
         } catch (Exception e) {
 

@@ -29,7 +29,9 @@ public class jano {
     private Urho urho = new Urho();
     private OnePint onePint = new OnePint();
     private Stones stones = new Stones();
+    private Bruuveri bruuveri = new Bruuveri();
     private List<Beer> beerList = null;
+
 
     @RequestMapping("/")
     public String showIndex(){
@@ -46,6 +48,8 @@ public class jano {
             beerList = kaisla.parsePage();
         } else if(ravintola.equalsIgnoreCase("stones")) {
             beerList = stones.parsePage();
+        } else if(ravintola.equalsIgnoreCase("bruuveri")) {
+            beerList = bruuveri.parsePage();
         } else if(ravintola.equalsIgnoreCase("onepint")) {
             beerList = onePint.parsePage();
         } else if(ravintola.equalsIgnoreCase("urho")) {

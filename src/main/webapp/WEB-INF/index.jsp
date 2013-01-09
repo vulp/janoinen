@@ -13,12 +13,10 @@
 
     <script type="text/javascript">
         $(function(){
-            $.get('${url}/kaisla', function(data){
+            $.get('${url}/bruuveri', function(data){
               $('#lintu').html(data);
             });
-            $.get('${url}/lintu', function(data){
-              $('#lintu').html(data);
-            });
+
         });
     </script>
 </head>

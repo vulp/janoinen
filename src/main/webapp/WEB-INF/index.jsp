@@ -3,7 +3,7 @@
 <html lang="fi">
 <head>
     <c:set var="url">${pageContext.request.contextPath}</c:set>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Type" content="text/html; UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Helsingin hanat</title>
     <link href="${url}/css/bootstrap.min.css" rel="stylesheet" media="screen">
@@ -14,6 +14,9 @@
     <script type="text/javascript">
         $(function(){
             $.get('${url}/kaisla', function(data){
+              $('#lintu').html(data);
+            });
+            $.get('${url}/lintu', function(data){
               $('#lintu').html(data);
             });
         });
@@ -79,7 +82,7 @@
               <p><a class="btn" href="#">View details &raquo;</a></p>
             </div><!--/span-->
           </div><!--/row-->
-          
+
           <div class="row-fluid">
             <div class="span5">
               <h2>Heading</h2>
@@ -92,7 +95,7 @@
               <p><a class="btn" href="#">View details &raquo;</a></p>
             </div><!--/span-->
           </div><!--/row-->
-          
+
         </div><!--/span-->
       </div><!--/row-->
     </div><!--/.fluid-container-->

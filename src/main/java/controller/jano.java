@@ -29,16 +29,15 @@ public class jano {
     private Urho urho = new Urho();
     private OnePint onePint = new OnePint();
     private Stones stones = new Stones();
+    private List<Beer> beerList = null;
+
     @RequestMapping("/")
     public String showIndex(){
         return "index";
     }
 
-    //todo laita eri metodeihin
     @RequestMapping(value = "/{ravintola}", method = RequestMethod.GET)
 	public String printWelcome(@PathVariable String ravintola, Model model) {
-        List<Beer> beerList = null;
-
         if(ravintola.equalsIgnoreCase("lintu")) {
             beerList = lintu.parsePage();
         } else if(ravintola.equalsIgnoreCase("penni")) {

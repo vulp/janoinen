@@ -13,7 +13,7 @@
 
     <script type="text/javascript">
         $(function(){
-            $.get('${url}/bruuveri', function(data){
+            $.get('${url}/teereenpeli', function(data){
               $('#lintu').html(data);
             });
 

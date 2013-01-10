@@ -21,7 +21,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/")
-public class jano {
+final class jano {
 
     private Lintu lintu = new Lintu();
     private Kaisla kaisla = new Kaisla();
@@ -31,7 +31,7 @@ public class jano {
     private Stones stones = new Stones();
     private Bruuveri bruuveri = new Bruuveri();
     private List<Beer> beerList = null;
-
+    private Teereenpeli teereenpeli = new Teereenpeli();
 
     @RequestMapping("/")
     public String showIndex(){
@@ -52,6 +52,8 @@ public class jano {
             beerList = bruuveri.parsePage();
         } else if(ravintola.equalsIgnoreCase("onepint")) {
             beerList = onePint.parsePage();
+        } else if(ravintola.equalsIgnoreCase("teereenpeli")) {
+            beerList = teereenpeli.parsePage();
         } else if(ravintola.equalsIgnoreCase("urho")) {
             beerList = urho.parsePage();
         } else if(ravintola.equalsIgnoreCase("onnela") || ravintola.equalsIgnoreCase("tiger")) {

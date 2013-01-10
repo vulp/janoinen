@@ -39,6 +39,7 @@ final class jano {
         return "index";
     }
 
+    //todo tee paremmi
     @RequestMapping(value = "/{ravintola}", method = RequestMethod.GET)
 	public String printWelcome(@PathVariable String ravintola, Model model) {
         if(ravintola.equalsIgnoreCase("lintu")) {

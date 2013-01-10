@@ -13,7 +13,7 @@
 
     <script type="text/javascript">
         $(function(){
-            $.get('${url}/teereenpeli', function(data){
+            $.get('${url}/vlatava', function(data){
               $('#lintu').html(data);
             });
 

@@ -16,7 +16,7 @@ import java.util.List;
  * Time: 7:26 PM
  * To change this template use File | Settings | File Templates.
  */
-public class Vlatava {
+public class Vltava {
     private Document doc;
     private List<Beer> beerList;
 

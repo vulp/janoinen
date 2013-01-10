@@ -33,7 +33,7 @@ final class jano {
     private List<Beer> beerList = null;
     private Teereenpeli teereenpeli = new Teereenpeli();
     private Blackdoor blackdoor = new Blackdoor();
-    private Vlatava vlatava = new Vlatava();
+    private Vltava vltava = new Vltava();
     @RequestMapping("/")
     public String showIndex(){
         return "index";
@@ -55,8 +55,8 @@ final class jano {
             beerList = onePint.parsePage();
         } else if(ravintola.equalsIgnoreCase("blackdoor")) {
             beerList = blackdoor.parsePage();
-        } else if(ravintola.equalsIgnoreCase("vlatava")) {
-            beerList = vlatava.parsePage();
+        } else if(ravintola.equalsIgnoreCase("vltava")) {
+            beerList = vltava.parsePage();
         } else if(ravintola.equalsIgnoreCase("teerenpeli")) {
             beerList = teereenpeli.parsePage();
         } else if(ravintola.equalsIgnoreCase("urho")) {

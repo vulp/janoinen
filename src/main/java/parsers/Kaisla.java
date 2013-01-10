@@ -1,18 +1,18 @@
 package parsers;
-
+     
 import model.Beer;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
-
+     
+     
 import java.util.ArrayList;
 import java.util.List;
-
+     
 /**
  * Created by IntelliJ IDEA.
- * User: vulp
+ * User: vulp && vetoketju
  * Date: 1/7/13
  * Time: 10:40 PM
  * To change this template use File | Settings | File Templates.
@@ -20,17 +20,16 @@ import java.util.List;
 public class Kaisla {
     private Document doc;
     private List<Beer> beerList;
-
+     
     public List<Beer> parsePage() {
         try {
             beerList = new ArrayList<Beer>();
             doc  = Jsoup.connect("http://www.oluthuone.fi/kaisla-juomalista.html").get();
             Elements elements = doc.select("div#c165 td");
-
+     
             double percent;
-            String nimi;
+            String nimi = "";
             for (Element element : elements) {
-                System.out.println("test " +element.text());
                 if(!element.text().equalsIgnoreCase("Hanaoluet") &&
                         !element.text().equalsIgnoreCase("Suomalaiset") &&
                         !element.text().equalsIgnoreCase("KUUKAUDEN HANAOLUT >") &&
@@ -38,22 +37,31 @@ public class Kaisla {
                         !element.text().equalsIgnoreCase("Brittiläiset") &&
                         !element.text().equalsIgnoreCase("Belgialaiset") &&
                         !element.text().equalsIgnoreCase("Saksalaiset") &&
-                        !element.text().equalsIgnoreCase("Muut Maat")
+                        !element.text().equalsIgnoreCase("Muut Maat") &&
+                        !element.text().replace('\u00A0',' ').trim().equals("")
                 ) {
                     try {
-                        percent = Double.parseDouble(element.text().substring(element.text().indexOf(",")-2, element.text().length()-1).replaceAll(",","."));
+                        String eT = element.text().trim();
+                        int prosenttimerkinKohta = eT.indexOf("%");
+                                int alku = 0;
+                                for(int i = prosenttimerkinKohta-1; i>=alku; i--){
+                                        if(!Character.isDigit(eT.charAt(i)) && eT.charAt(i) != ',' && eT.charAt(i) != ' '){
+                                                alku = i;
+                                                break;
+                                        }
+                                }
+                                nimi = eT.substring(0,alku+1).trim();
+                                percent = Double.parseDouble(eT.substring(alku+1,prosenttimerkinKohta).replace(',','.').trim());
                     } catch (Exception e) {
                         percent = -1;
                     }
-                    if(percent != -1) {
-                        nimi = element.text().substring(0,element.text().indexOf(",")-2);
-                    } else {
-                        //todo tarkista onko prossa ilman pilkkua
+                    if(percent == -1) {
                        nimi = element.text();
                     }
                     beerList.add(new Beer(nimi, -1, percent,""));
                 }
             }
+               
         } catch (Exception e) {
             System.out.println("Error "+ e);
         }

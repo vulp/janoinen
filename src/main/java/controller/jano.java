@@ -22,96 +22,96 @@ import java.util.List;
 @RequestMapping("/")
 final class jano {
 
-    private Lintu lintu = new Lintu();
-    private Kaisla kaisla = new Kaisla();
-    private Penni penni = new Penni();
-    private Urho urho = new Urho();
-    private OnePint onePint = new OnePint();
-    private Stones stones = new Stones();
-    private Bruuveri bruuveri = new Bruuveri();
+    private final Lintu lintu = new Lintu();
+    private final Kaisla kaisla = new Kaisla();
+    private final Penni penni = new Penni();
+    private final Urho urho = new Urho();
+    private final OnePint onePint = new OnePint();
+    private final Stones stones = new Stones();
+    private final Bruuveri bruuveri = new Bruuveri();
     private List<Beer> beerList = null;
-    private Teereenpeli teereenpeli = new Teereenpeli();
-    private Blackdoor blackdoor = new Blackdoor();
-    private Vltava vltava = new Vltava();
-    private Amsterdam amsterdam = new Amsterdam();
+    private final Teereenpeli teereenpeli = new Teereenpeli();
+    private final Blackdoor blackdoor = new Blackdoor();
+    private final Vltava vltava = new Vltava();
+    private final Amsterdam amsterdam = new Amsterdam();
 
     @RequestMapping("/")
-    public String showIndex() {
+    private String showIndex() {
         return "index";
     }
 
     @RequestMapping(value = "/lintu/", method = RequestMethod.GET)
-    public String showLintu(Model model) {
+    private String showLintu(Model model) {
         beerList = lintu.parsePage();
         model.addAttribute("olvi", beerList);
         return "beerlist";
     }
 
     @RequestMapping(value = "/penni/", method = RequestMethod.GET)
-    public String showPenni(Model model) {
+    private String showPenni(Model model) {
         beerList = penni.parsePage();
         model.addAttribute("olvi", beerList);
         return "beerlist";
     }
 
     @RequestMapping(value = "/kaisla/", method = RequestMethod.GET)
-    public String showKaisla(Model model) {
+    private String showKaisla(Model model) {
         beerList = kaisla.parsePage();
         model.addAttribute("olvi", beerList);
         return "beerlist";
     }
 
     @RequestMapping(value = "/stones/", method = RequestMethod.GET)
-    public String showStones(Model model) {
+    private String showStones(Model model) {
         beerList = stones.parsePage();
         model.addAttribute("olvi", beerList);
         return "beerlist";
     }
 
     @RequestMapping(value = "/bruuveri/", method = RequestMethod.GET)
-    public String showBruuveri(Model model) {
+    private String showBruuveri(Model model) {
         beerList = bruuveri.parsePage();
         model.addAttribute("olvi", beerList);
         return "beerlist";
     }
 
     @RequestMapping(value = "/onepint/", method = RequestMethod.GET)
-    public String showOnepint(Model model) {
+    private String showOnepint(Model model) {
         beerList = onePint.parsePage();
         model.addAttribute("olvi", beerList);
         return "beerlist";
     }
 
     @RequestMapping(value = "/blackdoor/", method = RequestMethod.GET)
-    public String showBlackdoor(Model model) {
+    private String showBlackdoor(Model model) {
         beerList = blackdoor.parsePage();
         model.addAttribute("olvi", beerList);
         return "beerlist";
     }
 
     @RequestMapping(value = "/vltava/", method = RequestMethod.GET)
-    public String showVltava(Model model) {
+    private String showVltava(Model model) {
         beerList = vltava.parsePage();
         model.addAttribute("olvi", beerList);
         return "beerlist";
     }
 
     @RequestMapping(value = "/teerenpeli/", method = RequestMethod.GET)
-    public String showTeerenpeli(Model model) {
+    private String showTeerenpeli(Model model) {
         beerList = teereenpeli.parsePage();
         model.addAttribute("olvi", beerList);
         return "beerlist";
     }
 
     @RequestMapping(value = "/urho/", method = RequestMethod.GET)
-    public String showUrho(Model model) {
+    private String showUrho(Model model) {
         beerList = urho.parsePage();
         model.addAttribute("olvi", beerList);
         return "beerlist";
     }
 
     @RequestMapping(value = "/asterdam/", method = RequestMethod.GET)
-    public String showAmsterdam(Model model) {
+    private String showAmsterdam(Model model) {
         //beerList = penni.parsePage();
         return "beerlist";
     }

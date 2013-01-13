@@ -7,6 +7,8 @@ package model;
  * Time: 9:12 PM
  * To change this template use File | Settings | File Templates.
  */
+//@Entity
+//@Table
 public class Beer {
     private String name;
     private double price;

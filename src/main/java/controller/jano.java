@@ -7,15 +7,14 @@ package controller;
  * Time: 6:17 PM
  * To change this template use File | Settings | File Templates.
  */
+
 import model.Beer;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import parsers.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -34,48 +33,86 @@ final class jano {
     private Teereenpeli teereenpeli = new Teereenpeli();
     private Blackdoor blackdoor = new Blackdoor();
     private Vltava vltava = new Vltava();
+    private Amsterdam amsterdam = new Amsterdam();
+
     @RequestMapping("/")
-    public String showIndex(){
+    public String showIndex() {
         return "index";
     }
 
-    //todo tee paremmi
-    @RequestMapping(value = "/{ravintola}", method = RequestMethod.GET)
-	public String printWelcome(@PathVariable String ravintola, Model model) {
-        if(ravintola.equalsIgnoreCase("lintu")) {
-            beerList = lintu.parsePage();
-        } else if(ravintola.equalsIgnoreCase("penni")) {
-            beerList = penni.parsePage();
-        } else if(ravintola.equalsIgnoreCase("kaisla")) {
-            beerList = kaisla.parsePage();
-        } else if(ravintola.equalsIgnoreCase("stones")) {
-            beerList = stones.parsePage();
-        } else if(ravintola.equalsIgnoreCase("bruuveri")) {
-            beerList = bruuveri.parsePage();
-        } else if(ravintola.equalsIgnoreCase("onepint")) {
-            beerList = onePint.parsePage();
-        } else if(ravintola.equalsIgnoreCase("blackdoor")) {
-            beerList = blackdoor.parsePage();
-        } else if(ravintola.equalsIgnoreCase("vltava")) {
-            beerList = vltava.parsePage();
-        } else if(ravintola.equalsIgnoreCase("teerenpeli")) {
-            beerList = teereenpeli.parsePage();
-        } else if(ravintola.equalsIgnoreCase("urho")) {
-            beerList = urho.parsePage();
-        } else if(ravintola.equalsIgnoreCase("onnela") || ravintola.equalsIgnoreCase("tiger")) {
-            Beer beer = new Beer();
-            beer.setName("Kotona saat vettä ilmaiseksi");
-            beer.setPrice(777);
-            beer.setDescription("Koitahan hakea jollain seuraavista: kaisla, urho, penni");
-            beerList = new ArrayList<Beer>();
-            beerList.add(beer);
-        } else {
-            Beer beer = new Beer();
-            beer.setName("Nyt on bisse hukassa");
-            beerList = new ArrayList<Beer>();
-            beerList.add(beer);
-        }
+    @RequestMapping(value = "/lintu/", method = RequestMethod.GET)
+    public String showLintu(Model model) {
+        beerList = lintu.parsePage();
         model.addAttribute("olvi", beerList);
-		return "beerList";
-	}
+        return "beerlist";
+    }
+
+    @RequestMapping(value = "/penni/", method = RequestMethod.GET)
+    public String showPenni(Model model) {
+        beerList = penni.parsePage();
+        model.addAttribute("olvi", beerList);
+        return "beerlist";
+    }
+
+    @RequestMapping(value = "/kaisla/", method = RequestMethod.GET)
+    public String showKaisla(Model model) {
+        beerList = kaisla.parsePage();
+        model.addAttribute("olvi", beerList);
+        return "beerlist";
+    }
+
+    @RequestMapping(value = "/stones/", method = RequestMethod.GET)
+    public String showStones(Model model) {
+        beerList = stones.parsePage();
+        model.addAttribute("olvi", beerList);
+        return "beerlist";
+    }
+
+    @RequestMapping(value = "/bruuveri/", method = RequestMethod.GET)
+    public String showBruuveri(Model model) {
+        beerList = bruuveri.parsePage();
+        model.addAttribute("olvi", beerList);
+        return "beerlist";
+    }
+
+    @RequestMapping(value = "/onepint/", method = RequestMethod.GET)
+    public String showOnepint(Model model) {
+        beerList = onePint.parsePage();
+        model.addAttribute("olvi", beerList);
+        return "beerlist";
+    }
+
+    @RequestMapping(value = "/blackdoor/", method = RequestMethod.GET)
+    public String showBlackdoor(Model model) {
+        beerList = blackdoor.parsePage();
+        model.addAttribute("olvi", beerList);
+        return "beerlist";
+    }
+
+    @RequestMapping(value = "/vltava/", method = RequestMethod.GET)
+    public String showVltava(Model model) {
+        beerList = vltava.parsePage();
+        model.addAttribute("olvi", beerList);
+        return "beerlist";
+    }
+
+    @RequestMapping(value = "/teerenpeli/", method = RequestMethod.GET)
+    public String showTeerenpeli(Model model) {
+        beerList = teereenpeli.parsePage();
+        model.addAttribute("olvi", beerList);
+        return "beerlist";
+    }
+
+    @RequestMapping(value = "/urho/", method = RequestMethod.GET)
+    public String showUrho(Model model) {
+        beerList = urho.parsePage();
+        model.addAttribute("olvi", beerList);
+        return "beerlist";
+    }
+
+    @RequestMapping(value = "/asterdam/", method = RequestMethod.GET)
+    public String showAmsterdam(Model model) {
+        //beerList = penni.parsePage();
+        return "beerlist";
+    }
 }

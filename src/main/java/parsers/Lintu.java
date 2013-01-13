@@ -27,12 +27,17 @@ public class Lintu {
             beerList = new ArrayList<Beer>();
             doc  = Jsoup.connect("http://pikkulintu.fi/juomat/hanassa-nyt.html").get();
             Elements elements = doc.select("div#maincontent li span");
+            double percent = 0;
             for(Element element : elements) {
                 String eT = element.text();
                 String nimi = eT.substring(0,eT.indexOf("-")).trim();  //todo korjaa nimi, ei tule oikein ratebeer ei löydä
                 //todo laske viivat   Magners omenasiideri, 4,5%  (väärin)
                 String desc = eT.substring(eT.lastIndexOf("-") + 1, eT.length()).trim();
-                double percent = Double.parseDouble(eT.substring(eT.indexOf("-") + 1 , eT.indexOf("%")).trim().replace(",", ".").replaceAll("\u00A0",""));
+                try {
+                    percent = Double.parseDouble(eT.substring(eT.indexOf("-") + 1 , eT.indexOf("%")).trim().replace(",", ".").replaceAll("\u00A0",""));
+                } catch (StringIndexOutOfBoundsException e) {
+                    percent = Double.parseDouble(eT.substring(eT.indexOf("-") + 1 , eT.lastIndexOf("-")).trim().replace(",", ".").replaceAll("\u00A0",""));
+                }
                 beerList.add(new Beer(nimi, -1, percent,desc));
             }
         }catch (Exception e) {

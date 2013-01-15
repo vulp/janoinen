@@ -26,11 +26,19 @@ public class Penni {
             Elements elements = doc.select("div#txt p");
 
             Beer thisBeer = null;
-
+            boolean allow = false;
             for (Element element : elements) {
                 String eT = element.text().replaceAll("\u00A0", " ").trim();
                 if (!eT.equalsIgnoreCase("Hanassa Nyt") && !eT.equalsIgnoreCase("&nbsp;") && eT.length() > 1) {
                     if (!eT.startsWith("-")) {
+                        allow = true;
+                    }
+                    if(!eT.startsWith("-") && eT.endsWith("%")) {
+                        allow = true;
+                    }else {
+                        allow = false;
+                    }
+                    if (allow) {
                         if (thisBeer != null) beerList.add(thisBeer);
                         thisBeer = new Beer();
                         thisBeer.setPrice(-1);

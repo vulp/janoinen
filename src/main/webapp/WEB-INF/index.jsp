@@ -12,7 +12,7 @@
     <script src="${url}/js/bootstrap.min.js"></script>
 
     <script type="text/javascript">
-        $(function() {
+        $(function() {/*
             $.get('${url}/lintu/', function(data) {
                 $('#lintu').append(data);
             });
@@ -27,10 +27,10 @@
             });
             $.get('${url}/stones/', function(data) {
                 $('#stones').append(data);
-            });
+            });     */
             $.get('${url}/penni/', function(data) {
                 $('#penni').append(data);
-            });
+            });         /*
             $.get('${url}/bruuveri/', function(data) {
                 $('#bruuveri').append(data);
             });
@@ -42,7 +42,7 @@
             });
             $.get('${url}/vltava/', function(data) {
                 $('#vltava').append(data);
-            });
+            });           */
         });
     </script>
 </head>

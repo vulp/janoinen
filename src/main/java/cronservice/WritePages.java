@@ -3,11 +3,12 @@ package cronservice;
 import model.Beer;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import parsers.Bruuveri;
+import parsers.*;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,20 +23,46 @@ public class WritePages {
 
     private FileOutputStream fop = null;
     private File file;
-    private StringBuffer bisset = new StringBuffer();
+    private StringBuffer bisset;
+    private List<Beer> beerList;
+    private List barList = new ArrayList();
+    private final Lintu lintu = new Lintu();
+    private final Kaisla kaisla = new Kaisla();
+    private final Penni penni = new Penni();
+    private final Urho urho = new Urho();
+    private final OnePint onePint = new OnePint();
+    private final Stones stones = new Stones();
+    private final Bruuveri bruuveri = new Bruuveri();
+    private final Teereenpeli teereenpeli = new Teereenpeli();
+    private final Blackdoor blackdoor = new Blackdoor();
+    private final Vltava vltava = new Vltava();
 
     //@Scheduled(cron="*/1 * * * * THU")
     //@Scheduled(fixedDelay = 5000)  //testiä varten  ajaa 5 sekunnin välein getpagesia !ei serverille tätä versiota kiitos!
     public void getPages() {
-        Bruuveri bruuveri = new Bruuveri();
+        barList.add(bruuveri.parsePage());
+        barList.add(lintu.parsePage());
+        barList.add(kaisla.parsePage());//parse pages
+        barList.add(penni.parsePage());
+        barList.add(urho.parsePage());
+        barList.add(onePint.parsePage());
+        barList.add(stones.parsePage());
+        barList.add(teereenpeli.parsePage());
+        barList.add(blackdoor.parsePage());
+        barList.add(vltava.parsePage());
 
-        //käydään baari läpi
-        for (Beer bisse : bruuveri.parsePage()){
-             bisset.append(bisse);
+        //check beerlist
+        for(Object bar : barList) {
+            beerList = (List<Beer>) bar;
+
+            bisset = new StringBuffer();
+
+            //write beer to stringbuffer
+            for (Beer bisse : beerList){
+                bisset.append(bisse);//todo baarin nimi ja bissen listaus tähän
+            }
+            writePages(bisset, "bruuveri");
         }
-
-        writePages(bisset, "bruuveri");
-
     }
 
     private void writePages(StringBuffer parsedBeers, String  barName) {

@@ -59,9 +59,9 @@ public class WritePages {
 
             //write beer to stringbuffer
             for (Beer bisse : beerList){
-                bisset.append(bisse);//todo baarin nimi ja bissen listaus tähän
+                bisset.append(bisse);
             }
-            writePages(bisset, "bruuveri");
+            writePages(bisset, "bruuveri");//todo baarin nimi ja bissen listaus tähän
         }
     }
 

@@ -40,6 +40,11 @@ final class jano {
         return "index";
     }
 
+    @RequestMapping("/test")
+    private String showTestPage() {
+        return "test";
+    }
+
     @RequestMapping(value = "/lintu/", method = RequestMethod.GET)
     private String showLintu(Model model) {
         beerList = lintu.parsePage();

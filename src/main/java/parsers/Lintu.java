@@ -1,6 +1,7 @@
 package parsers;
 
 import model.Beer;
+import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -19,9 +20,8 @@ import java.util.List;
 public class Lintu {
 
     private Document doc;
-
     private List<Beer> beerList;
-
+    private static final Logger logger = Logger.getLogger(Lintu.class);
     public List<Beer> parsePage() {
         try {
             beerList = new ArrayList<Beer>();
@@ -41,7 +41,7 @@ public class Lintu {
                 beerList.add(new Beer(nimi, -1, percent,desc));
             }
         }catch (Exception e) {
-            System.out.println("error " +e);
+            logger.error("Lintu error: " +e);
         }
         return beerList;
     }

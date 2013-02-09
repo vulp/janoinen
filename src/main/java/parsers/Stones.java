@@ -2,6 +2,7 @@ package parsers;
 
 import model.Beer;
 
+import org.apache.log4j.Logger;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -13,9 +14,8 @@ import java.util.List;
 
 public class Stones {
     private Document doc;
-
     private List<Beer> beerList;
-
+    private static final Logger logger = Logger.getLogger(Stones.class);
     public List<Beer> parsePage() {
         try {
             ArrayList<Beer> smallerBeerList = new ArrayList<Beer>();
@@ -60,7 +60,7 @@ public class Stones {
             }
             beerList.addAll(smallerBeerList);
         } catch (Exception e) {
-            System.out.println("error " + e);
+            logger.error("Stones error: " +e);
         }
         return beerList;
     }

@@ -1,6 +1,7 @@
 package parsers;
 
 import model.Beer;
+import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -19,7 +20,7 @@ import java.util.List;
 public class Teereenpeli {
     private Document doc;
     private List<Beer> beerList;
-
+    private static final Logger logger = Logger.getLogger(Teereenpeli.class);
     public List<Beer> parsePage() {
         try {
             beerList = new ArrayList<Beer>();
@@ -31,7 +32,6 @@ public class Teereenpeli {
             String desc = "";
             for(Element element : elements) {
                 if(element.text().length() > 1) {
-                    System.out.println("test " +element.text());
                     if(i == 0) {
                         nimi = element.text();
                         i++;
@@ -46,7 +46,7 @@ public class Teereenpeli {
                 }
             }
         } catch (Exception e) {
-            System.out.println("Error "+ e);
+            logger.error("Teereenpeli error: " +e);
         }
         return beerList;
     }

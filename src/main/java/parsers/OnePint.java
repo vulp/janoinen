@@ -5,6 +5,7 @@ import java.util.List;
 
 import model.Beer;
 
+import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -19,9 +20,8 @@ import org.jsoup.select.Elements;
 
 public class OnePint {
     private Document doc;
-
     private List<Beer> beerList;
-
+    private static final Logger logger = Logger.getLogger(OnePint.class);
     public List<Beer> parsePage() {
         try {
             beerList = new ArrayList<Beer>();
@@ -44,16 +44,10 @@ public class OnePint {
                     beerList.add(new Beer(eT.substring(0, alku + 1).trim(), -1,
                             Double.parseDouble(eT.substring(alku + 1, prosenttimerkinKohta).replace(',', '.')),
                             ""));
-                    //System.out.println("--------------------------------");
-                    //System.out.println("Prossat =" + eT.substring(alku+1,prosenttimerkinKohta));
-                    //System.out.println("Name="+ eT.substring(0,alku+1).trim());
-
-
                 }
-
             }
         } catch (Exception e) {
-            System.out.println("error " + e);
+            logger.error("Onepint error: " +e);
         }
         return beerList;
     }

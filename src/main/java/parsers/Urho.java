@@ -1,10 +1,10 @@
 package parsers;
 
 import model.Beer;
+import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
-
 import org.jsoup.nodes.Element;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,7 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public class Urho {
-
+    private static final Logger logger = Logger.getLogger(Urho.class);
     private Document doc;
     private List<Beer> beerList;
 
@@ -72,7 +72,7 @@ public class Urho {
             }
 
         } catch (Exception e) {
-            System.out.println("error " + e);
+            logger.error("Urho error: " +e);
         }
             return beerList;
         }

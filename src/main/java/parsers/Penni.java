@@ -1,6 +1,7 @@
 package parsers;
 
 import model.Beer;
+import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -18,7 +19,7 @@ import java.util.*;
 public class Penni {
     private Document doc;
     private List<Beer> beerList;
-
+    private static final Logger logger = Logger.getLogger(Penni.class);
     public List<Beer> parsePage() {
         try {
             beerList = new ArrayList<Beer>();
@@ -64,7 +65,7 @@ public class Penni {
             }
 
         } catch (Exception e) {
-
+            logger.error("Penni error: " +e);
         }
         return beerList;
     }

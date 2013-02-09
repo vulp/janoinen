@@ -9,6 +9,7 @@ package controller;
  */
 
 import model.Beer;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import parsers.*;
 
 import java.util.List;
+
 
 
 @Controller
@@ -34,6 +36,8 @@ final class jano {
     private final Blackdoor blackdoor = new Blackdoor();
     private final Vltava vltava = new Vltava();
     private final Amsterdam amsterdam = new Amsterdam();
+
+    private static final Logger logger = Logger.getLogger(jano.class);
 
     @RequestMapping("/")
     private String showIndex() {

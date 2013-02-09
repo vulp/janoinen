@@ -1,8 +1,9 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-    <c:set var="url">${pageContext.request.contextPath}</c:set>
+    <spring:url value="${pageContext.request.contextPath}" var="url"></spring:url>
     <meta http-equiv="Content-Type" content="text/html; UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Helsingin hanat</title>

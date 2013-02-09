@@ -1,6 +1,7 @@
 package parsers;
 
 import model.Beer;
+import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -21,7 +22,7 @@ public class Bruuveri {
     private Document doc;
     private List<Beer> beerList;
     private List<Beer> beerList2;
-
+    private static final Logger logger = Logger.getLogger(Bruuveri.class);
     public List<Beer> parsePage() {
         try {
             beerList = new ArrayList<Beer>();
@@ -52,7 +53,7 @@ public class Bruuveri {
                 i++;
             }
         } catch (Exception e) {
-            System.out.println("error " + e);
+            logger.error("Bruuveri error: " +e);
         }
         return beerList;
     }

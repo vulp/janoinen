@@ -1,6 +1,7 @@
 package cronservice;
 
 import model.Beer;
+import org.apache.log4j.Logger;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import parsers.*;
@@ -21,6 +22,7 @@ import java.util.List;
 @Component
 public class WritePages {
 
+    private static final Logger logger = Logger.getLogger(WritePages.class);
     private FileOutputStream fop = null;
     private File file;
     private StringBuffer bisset;
@@ -83,12 +85,12 @@ public class WritePages {
             System.out.println("Beers done");
 
         }catch(Exception e){
-            e.printStackTrace();
+            logger.error("Cronservice error: " +e);
         } finally {
             try{
                  fop.close();
             } catch (Exception ee) {
-
+                logger.error("Cronservice error2: " +ee);
             }
         }
 

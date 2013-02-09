@@ -1,6 +1,7 @@
 package parsers;
      
 import model.Beer;
+import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -20,7 +21,7 @@ import java.util.List;
 public class Kaisla {
     private Document doc;
     private List<Beer> beerList;
-     
+    private static final Logger logger = Logger.getLogger(Kaisla.class);
     public List<Beer> parsePage() {
         try {
             beerList = new ArrayList<Beer>();
@@ -63,7 +64,7 @@ public class Kaisla {
             }
                
         } catch (Exception e) {
-            System.out.println("Error "+ e);
+            logger.error("Kaisla error: " +e);
         }
         return beerList;
     }

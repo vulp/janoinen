@@ -1,6 +1,7 @@
 package parsers;
 
 import model.Beer;
+import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -19,7 +20,7 @@ import java.util.List;
 public class Vltava {
     private Document doc;
     private List<Beer> beerList;
-
+    private static final Logger logger = Logger.getLogger(Vltava.class);
     public List<Beer> parsePage() {
         try {
             beerList = new ArrayList<Beer>();
@@ -60,18 +61,20 @@ public class Vltava {
                         try {
                             hinta = Double.parseDouble(hintaEl.text().substring(0, hintaEl.text().indexOf('€') - 1).replace('\u00A0', ' ').trim().replace(',', '.'));
                         } catch (Exception e) {
+                            logger.error("Vlatava error: " +e);
                         }
 
                         try {
                             percent = Double.parseDouble(nimi.substring(alku + 1, prosenttimerkinKohta).replace(',', '.').trim());
                         } catch (Exception es) {
+                            logger.error("Vlatava error2 :" +es);
                         }
 
                         nimi = nimi.substring(0, alku + 1).trim();
 
                         beerList.add(new Beer(nimi.replace('\u00A0', ' ').trim(), hinta, percent, descr.replace('\u00A0', ' ').trim()));
                     } catch (Exception e) {
-                        //e.printStackTrace();
+                        logger.error("vlatava error 3 " +e);
                     }
 
                 }

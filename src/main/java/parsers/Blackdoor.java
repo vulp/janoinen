@@ -5,6 +5,7 @@ import java.util.List;
 
 import model.Beer;
 
+import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -16,8 +17,8 @@ import org.jsoup.select.Elements;
 
 public class Blackdoor {
     private Document doc;
-
     private List<Beer> beerList;
+    private static final Logger logger = Logger.getLogger(Blackdoor.class);
 
     public List<Beer> parsePage() {
         try {
@@ -33,9 +34,8 @@ public class Blackdoor {
                 }
             }
 
-
         } catch (Exception e) {
-            System.out.println("error " + e);
+            logger.error("Blackdoor error: " +e);
         }
         return beerList;
     }

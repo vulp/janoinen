@@ -36,7 +36,7 @@ public class WritePages {
     private final Teereenpeli teereenpeli = new Teereenpeli();
     private final Blackdoor blackdoor = new Blackdoor();
     private final Vltava vltava = new Vltava();
-    @Scheduled(cron="0 0 24 ? * MON")
+    @Scheduled(cron="0 0 1 ? * MON")
     //@Scheduled(fixedDelay = 5000)  //testiä varten  ajaa 5 sekunnin välein getpagesia !ei serverille tätä versiota kiitos!
     public void getPages() {
         logger.info("Starting cron task for beer parsing");

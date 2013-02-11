@@ -1,4 +1,4 @@
-package controller;
+package Janocontroller;
 
 /**
  * Created by IntelliJ IDEA.
@@ -8,7 +8,8 @@ package controller;
  * To change this template use File | Settings | File Templates.
  */
 
-import model.Beer;
+import Beer.Beer;
+import Cronservice.WritePages;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

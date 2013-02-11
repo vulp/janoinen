@@ -6,13 +6,13 @@
     <meta http-equiv="Content-Type" content="text/html; UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Helsingin hanat</title>
-    <link href="${url}/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="${url}/css/style.css" rel="stylesheet" media="screen">
+    <link href="${url}css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="${url}css/style.css" rel="stylesheet" media="screen">
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script src="${url}/js/bootstrap.min.js"></script>
+    <script src="${url}js/bootstrap.min.js"></script>
 
     <script type="text/javascript">
-        $(function() {/*
+        $(function() {
             $.get('${url}/lintu/', function(data) {
                 $('#lintu').append(data);
             });
@@ -27,10 +27,10 @@
             });
             $.get('${url}/stones/', function(data) {
                 $('#stones').append(data);
-            });     */
+            });
             $.get('${url}/penni/', function(data) {
                 $('#penni').append(data);
-            });         /*
+            });
             $.get('${url}/bruuveri/', function(data) {
                 $('#bruuveri').append(data);
             });
@@ -42,7 +42,7 @@
             });
             $.get('${url}/vltava/', function(data) {
                 $('#vltava').append(data);
-            });           */
+            });
         });
     </script>
 </head>

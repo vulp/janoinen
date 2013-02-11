@@ -1,6 +1,6 @@
 package parsers;
 
-import model.Beer;
+import Beer.Beer;
 import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -76,14 +76,10 @@ public class Vltava {
                     } catch (Exception e) {
                         logger.error("vlatava error 3 " +e);
                     }
-
                 }
-
             }
-
-
         } catch (Exception e) {
-            System.out.println("error " + e);
+            logger.error("vlatava error 4 " +e);
         }
         return beerList;
     }

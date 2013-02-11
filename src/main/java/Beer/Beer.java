@@ -1,4 +1,4 @@
-package model;
+package Beer;
 
 /**
  * Created by IntelliJ IDEA.

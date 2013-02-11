@@ -3,7 +3,7 @@ package parsers;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Beer;
+import Beer.Beer;
 
 import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;

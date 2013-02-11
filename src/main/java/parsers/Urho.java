@@ -1,6 +1,6 @@
 package parsers;
 
-import model.Beer;
+import Beer.Beer;
 import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -34,7 +34,6 @@ public class Urho {
             int kierros = 0;
             for(Element element : elements) {
                     if(!element.text().equalsIgnoreCase("Koko") && !element.text().equalsIgnoreCase("Hinta") && !element.text().equalsIgnoreCase("Nimi") && !element.text().equalsIgnoreCase("Tyyli") && !element.text().equalsIgnoreCase("Maa") && !element.text().equalsIgnoreCase("Til") && !element.text().equalsIgnoreCase("pieni") && !element.text().equalsIgnoreCase("Iso") && !element.text().equalsIgnoreCase("Til %") ) {
-                        System.out.println("test " + element.text() + " <i>" +i);
                         if(i == 0) {
                             if(element.text().length() < 40) {
                                 nimi = element.text();

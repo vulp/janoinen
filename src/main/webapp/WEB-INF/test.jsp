@@ -7,10 +7,10 @@
     <meta http-equiv="Content-Type" content="text/html; UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Helsingin hanat</title>
-    <link href="${url}/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="${url}/css/style.css" rel="stylesheet" media="screen">
+    <link href="${url}css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="${url}css/style.css" rel="stylesheet" media="screen">
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script src="${url}/js/bootstrap.min.js"></script>
+    <script src="${url}js/bootstrap.min.js"></script>
 
 </head>
 <body>

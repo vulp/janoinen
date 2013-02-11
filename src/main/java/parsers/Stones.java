@@ -1,9 +1,8 @@
 package parsers;
 
-import model.Beer;
+import Beer.Beer;
 
 import org.apache.log4j.Logger;
-import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;

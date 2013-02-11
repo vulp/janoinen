@@ -1,14 +1,12 @@
-package cronservice;
+package Cronservice;
 
-import model.Beer;
+import Beer.Beer;
 import org.apache.log4j.Logger;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import parsers.*;
-
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,10 +36,10 @@ public class WritePages {
     private final Teereenpeli teereenpeli = new Teereenpeli();
     private final Blackdoor blackdoor = new Blackdoor();
     private final Vltava vltava = new Vltava();
-
-    //@Scheduled(cron="*/1 * * * * THU")
+    @Scheduled(cron="0 0 24 ? * MON")
     //@Scheduled(fixedDelay = 5000)  //testiä varten  ajaa 5 sekunnin välein getpagesia !ei serverille tätä versiota kiitos!
     public void getPages() {
+        logger.info("Starting cron task for beer parsing");
         barList.add(bruuveri.parsePage());
         barList.add(lintu.parsePage());
         barList.add(kaisla.parsePage());//parse pages
@@ -53,17 +51,36 @@ public class WritePages {
         barList.add(blackdoor.parsePage());
         barList.add(vltava.parsePage());
 
+        List<String> baarit = new ArrayList<String>();
+        baarit.add("bruuveri");
+        baarit.add("lintu");
+        baarit.add("kaisla");
+        baarit.add("penni");
+        baarit.add("urho");
+        baarit.add("onePint");
+        baarit.add("stones");
+        baarit.add("teereenpeli");
+        baarit.add("blackdoor");
+        baarit.add("vlatava");
+        int listPosition = 0;
         //check beerlist
         for(Object bar : barList) {
             beerList = (List<Beer>) bar;
-
             bisset = new StringBuffer();
 
             //write beer to stringbuffer
+            bisset.append("<table>");
+            bisset.append("<tbody>");
             for (Beer bisse : beerList){
-                bisset.append(bisse);
+                bisset.append("<tr>");
+                bisset.append("<td>" + bisse.getName() + "</td><td>" +bisse.getPercent() + "</td><td>" + bisse.getPrice() + "</td><td>" + bisse.getDescription() +"</td>\n");
+                bisset.append("</tr>");
             }
-            writePages(bisset, "bruuveri");//todo baarin nimi ja bissen listaus tähän
+            bisset.append("</tbody>");
+            bisset.append("</table>");
+            writePages(bisset, baarit.get(listPosition));
+            listPosition++;
+            logger.info(baarit.get(listPosition) + " done!");
         }
     }
 
@@ -82,8 +99,6 @@ public class WritePages {
             fop.write(contentInBytes);
             fop.flush();
             fop.close();
-            System.out.println("Beers done");
-
         }catch(Exception e){
             logger.error("Cronservice error: " +e);
         } finally {

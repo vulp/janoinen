@@ -30,8 +30,7 @@ public class Stones {
                     smallerBeerList.add(temp);
                 }
             }
-
-            doc = Jsoup.connect("http://www.stonespub.fi/m/juomalista").get();
+            doc = Jsoup.connect("http://www.stonespub.fi/m/juomat/").get();//sivusto oli muuttunut
             Elements els = doc.select("div.csc-default").first().select("h3");
             for (Element e : els) {
                 String eT = e.ownText();

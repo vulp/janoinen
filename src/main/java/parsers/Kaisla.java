@@ -25,7 +25,8 @@ public class Kaisla {
     public List<Beer> parsePage() {
         try {
             beerList = new ArrayList<Beer>();
-            doc  = Jsoup.connect("http://www.oluthuone.fi/kaisla-juomalista.html").get();
+            //doc  = Jsoup.connect("http://www.oluthuone.fi/kaisla-juomalista.html").get();//vanha osoite
+            doc  = Jsoup.connect("http://www.oluthuone.fi/oluthuoneet/kaisla/kaisla-juomalista/").get();
             Elements elements = doc.select("div#c165 td");
      
             double percent;

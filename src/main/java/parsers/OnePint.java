@@ -31,8 +31,7 @@ public class OnePint {
                 if (element.text().trim().equalsIgnoreCase("Tulossa:")) break;
 
                 String eT = element.ownText().trim();
-                if (!eT.equals("")) {
-                    //System.out.println(eT);
+                if (!eT.equals("") && eT.length() > 1) {
                     int prosenttimerkinKohta = eT.indexOf("%");
                     int alku = 0;
                     for (int i = prosenttimerkinKohta - 1; i >= alku; i--) {
@@ -41,9 +40,11 @@ public class OnePint {
                             break;
                         }
                     }
-                    beerList.add(new Beer(eT.substring(0, alku + 1).trim(), -1,
+                    if (prosenttimerkinKohta >= alku +1) {
+                            beerList.add(new Beer(eT.substring(0, alku + 1).trim(), -1,
                             Double.parseDouble(eT.substring(alku + 1, prosenttimerkinKohta).replace(',', '.')),
                             ""));
+                    } else {}//do nothing, wrong beer
                 }
             }
         } catch (Exception e) {
